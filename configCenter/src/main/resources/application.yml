@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: config-center
+  profiles:
+    active: ${SPRING_PROFILE}
+  security:
+    user:
+      name: user
+      password: pass
+  config:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri:
+
+
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    fetch-registry: true
+    registerWithEureka: true
+    serviceUrl:
+            defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka-server1:8761/eureka
+
+
+---
+server:
+  port: 8888
+spring:
+  profiles: server1
+eureka:
+  instance:
+    hostname: eureka-server1
+

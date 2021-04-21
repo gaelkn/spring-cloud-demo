@@ -1,0 +1,13 @@
+server:
+  port: 8761
+spring:
+  profiles: server1
+eureka:
+  instance:
+    hostname: eureka-server1
+    prefer-ip-address: false
+  client:
+    fetch-registry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://eureka-server1:8761/eureka,http://eureka-server2:8761/eureka,http://eureka-server3:8761/eureka
